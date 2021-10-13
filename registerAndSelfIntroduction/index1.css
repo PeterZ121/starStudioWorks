@@ -1,0 +1,415 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+    background-image: url(images/mountains-1985027.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family:"Times New Romans", "Times", serif;
+
+}
+
+.container{
+    position:absolute;
+    width:800px;
+    max-width:90%;
+    transition:all 0.65s ease-in-out;
+    
+    background-color:#FFFFFF90;
+    border-radius:25px;
+    box-shadow:17px 20px 5px rgba(0, 0, 0,0.25);
+    height:480px;
+    overflow: hidden;   
+    /* 如果不使用该属性，溢出内容将覆盖边框*/
+}
+
+.formContainer{
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #e9e9e9;
+    
+    transition:all 0.65s ease-in-out;   
+}
+
+h1{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 100;
+    color:gray;
+}
+
+.signUpContainer{
+    /* right: 0; */
+    z-index: 1;  
+
+}
+
+.signInContainer{
+    z-index: 2;
+    /* 先显示登录界面 */
+}
+.formContainer form{   
+    width: 100%;
+    height: 100%;
+    
+    display:flex;
+    flex-direction: column;
+    justify-content: center;    
+    align-items:center;
+}
+
+.input1 {
+    border:thin solid;
+    border-radius: 25px;
+    font:1.2em "Times New Romans", "Times", serif;
+    width:  60%;
+    height: 50px;
+    margin: 4%;
+    background-color:#FFFFFF90;
+}
+
+.input2{
+    border-radius: 25px;
+    border: thin solid;
+    font:1.2em "Times New Romans", "Times", serif;
+    width:60%;
+    height: 7%;
+    margin: 12px;
+    background-color:#FFFFFF90;   
+}
+
+button, .submit{
+    width: 30%;
+    height: 10%;
+    margin-top: 30px;
+    border:none;
+    
+    cursor: pointer;
+
+    background-image: linear-gradient(90deg,#0367a6 0%, #008997 74%);
+
+    font:1.2em "Times New Romans", "Times", serif;
+    color: #FFFFFF;
+}
+
+.btn{
+    border-radius: 25px;
+    height: 10%;
+    width:70%;
+    
+    position: absolute;
+    top: 38%;
+    left: 0;
+    right: 0;
+    margin: auto;   
+}
+
+button:active, .submit:active{   
+    transform:scale(0.9);/*点击按钮时会缩小，形成动画效果*/
+}
+
+.overlayContainer{
+    position: absolute;
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+    z-index: 100;
+
+    right: 0;
+
+    overflow: hidden;
+    /* 溢出隐藏 */
+    transition: transform 0.65s ease-in-out;
+}
+
+.overlay{
+    position: absolute;
+    width:200%;
+    height: 100%;
+   
+    background-image:url(images/mountains-1985027.jpg);
+    background-size:cover;
+    /* 为覆盖面加背景 */
+    left: -100%;
+}
+
+.overContainer{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+}
+
+.overlayRightContainer{
+    right: 0;
+}
+
+.container.active .signInContainer{
+    transform: translateX(100%);
+}
+
+.container.active .signUpContainer{
+    transform: translateX(100%);
+    z-index: 3;
+}
+/* 登录注册界面同时右移，同时注册界面z-index值增加，以覆盖登录界面*/
+
+.container.active .overlayContainer{
+    transform: translateX(-100%);
+}
+.container.active .overlay{
+    transform: translateX(50%);
+}
+/* 覆盖容器向左移动，然后覆盖面向右移动，并且需要瞬间完成已达到切换效果 */
+
+
+
+.container.active2{
+
+    transform: translateX(-1500px);
+    
+}
+
+.cloudContainer{
+    display:none;
+}
+.cloudContainer.active-animation{
+    display:block;
+}
+.cloudContainer{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow:hidden;
+    
+    
+}
+
+.cloudContainer img{
+    width: 100%;
+}
+
+.cloudContainer .clouds{
+    position: absolute;
+    animation-fill-mode: none;
+    animation-delay: 1s;
+    animation: cloud 1.5s ease;
+    transform: translateX(-100%);
+    /* 设置动画播放后的状态 */
+}
+.cloudContainer #cloud1{ 
+    top: 20px;
+}
+.cloudContainer #cloud2{
+    top: -50px;  
+}
+.cloudContainer #cloud3{
+    top: -100px; 
+}
+.cloudContainer #cloud4{
+    top: -30px; 
+}
+.cloudContainer #cloud5{
+    top: -50px;   
+}
+.cloudContainer #cloud6{
+    top: -40px;
+}
+
+@keyframes cloud{
+    from{ /*关键帧*/   
+        transform: translateX(1500px);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+
+/* 自我介绍网页 */
+.introductionContainer{
+    position: absolute;
+    
+    width:80%;
+    height:98vh;
+
+    display: grid;  
+    grid-template-areas: 
+        "nav nav nav"
+        "aside content content"
+        "footer footer footer"; 
+    grid-template-rows: 0.6fr 8fr 1fr;
+    grid-template-columns: 1fr 4fr;
+
+}
+
+
+nav{
+ 
+    opacity: 0;
+    grid-area: nav;
+
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255,0.5);
+
+    display:inline-flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-left:10px;
+}
+content{
+  
+    opacity: 0;
+    grid-area: content;
+    margin:10px 0px;
+   
+    border-radius:15px;
+   
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+aside{
+    opacity: 0;
+    grid-area: aside;
+    margin:10px;
+    margin-left: 0px;
+    border-radius:15px;
+    
+    background-image: url(images/aside.jpg);
+}
+footer{
+    opacity: 0;
+    grid-area: footer;
+    background-image:url(images/footer.jpg);
+    background-size: cover;
+    border-radius: 15px;
+}
+
+.introductionContainer.active3 nav{
+    
+    animation-fill-mode: both;
+    animation: move 0.95s ease;
+    animation-delay: 1s; 
+
+    opacity: 1;
+    transition:opacity;
+    transition-delay: 1s;
+}
+.introductionContainer.active3 aside{
+    animation-fill-mode: both;
+    animation: move 0.95s ease; 
+    animation-delay: 0.7s;
+
+    opacity: 1;
+    transition:opacity;
+    transition-delay: 0.7s;
+    
+}
+
+.introductionContainer.active3 footer{
+
+    animation-fill-mode: both;
+    animation: move 0.95s ease; 
+    animation-delay: 1s;
+
+    opacity: 1;
+    transition:opacity;
+    transition-delay: 1s;
+}
+
+.introductionContainer.active3 content{
+    animation-fill-mode: both;
+    animation: move 0.95s ease; 
+    animation-delay: 1.3s; 
+
+    opacity: 1;
+    transition:opacity;
+    transition-delay:1.3s;
+    
+}
+
+@keyframes move{
+    from{ /*关键帧*/   
+        transform: translateX(1500px);       
+    }
+    to{
+        transform: translateX(0);       
+    }
+}
+aside img{
+    display: block;
+    margin: 30px auto;
+    width: 130px;
+    height: 130px;
+    
+    margin-bottom:5%;
+    border-radius: 150px;
+    
+}
+aside p{
+    text-align: center;
+    font-size:1.1em;
+    line-height: 30px;
+}
+
+nav ul{
+       flex-grow:3;
+}
+
+a{
+    text-decoration: none;
+    color:rgb(26, 103, 151);
+}
+a:hover{
+    color:rgba(89, 0, 205, 0.842);
+}
+
+nav ul li{
+    font-size: 1.2em;
+    display:inline;
+    
+    
+    margin:auto 8px;
+}
+nav p{
+    color: rgb(26, 103, 151);
+    font-size: 1.8em;
+    flex-grow:1;
+}
+#backLogIn{
+    flex-grow:1;
+    height:100%;
+    width:20%;
+    margin-top: 0px;
+    border-radius: 15px;
+
+}
+.contentDiv{
+    background-color: rgba(255, 255, 255,0.75);
+    flex-grow: 1;
+    margin:5px 0px;
+    border-radius: 15px;
+}
+.contentDiv p{
+    font-size:1.2em;
+    padding:20px;
+    color:rgb(26, 103, 151);
+}
+

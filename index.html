@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>登录注册界面</title>
+        <link rel='stylesheet' href="registerAndSelfIntroduction/index1.css">
+
+    </head>
+
+    <body>
+
+        <div class = "container">
+            <!--总的封装容器-->
+          
+                <div class = 'formContainer signInContainer'>
+                <!--登录页面-->  
+                    <form id = 'signInForm' action = "..." method = 'POST'>
+                        <h1>登录</h1>
+                        <input id = 'studentId' type="text" name = "studentNum" class="input1" placeholder="学号" required>
+                        <input id = 'password' type = "password" name = "code" class = "input1" placeholder="密码" required>
+                        <input type="submit" value = "确认登录" class = "input1 submit">
+                    </form> 
+                </div>
+        
+        
+                <div class = 'formContainer signUpContainer'>
+                <!--注册页面--> 
+                    <form id = 'signUpForm' action = "..." method = "POST">
+                        <h1>注册</h1>
+                        <input type="text" name = "realname" class="input2" placeholder="真实姓名" id='name' required>                   
+                        <input type="text" name = "stundentNum" class="input2" placeholder="学号" id='studentNum'required>
+                        <input type="text" name = "phoneNum" class="input2" placeholder="手机号" id = 'phoneNum' required>
+                        <input type = "password" name = "code" class = "input2" placeholder="密码" id = 'code' required>
+                        <input type = "password" name = "recode" class = "input2" placeholder="重复密码"  id = 'recode' required>
+                        <input type="submit" value = "确认注册" class = "input2 submit">            
+                    </form>
+                </div>
+            
+        
+                <div class = "overlayContainer">
+                <!--覆盖容器 展示部分-->
+                    <div class = 'overlay'>
+                    <!-- 覆盖页面 -->
+                        <div class = 'overContainer overlayLeftContainer'>
+                        <!--返回登录，覆盖左侧登录页面-->
+                            <button class='btn' id = 'willSignIn'>已注册，前往登录</button>
+                        </div>
+        
+                        <div class = 'overContainer overlayRightContainer'>
+                        <!--前往注册，覆盖右侧注册页面-->
+                            <button  class='btn' id = 'willSignUp'>未注册，前往注册</button>
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+        
+            <div class = "cloudContainer">
+            <!-- 云彩漂浮动画封装器 -->
+                <div id = "cloud1" class = "clouds"><img src = "registerAndSelfIntroduction/images/cloud1.png"></div>
+                <div id = "cloud2" class = "clouds"><img src = "registerAndSelfIntroduction/images/cloud2.png"></div>         
+                <div id = "cloud3" class = "clouds"><img src = "registerAndSelfIntroduction/images/cloud1.png"></div>
+                <div id = "cloud4" class = "clouds"><img src = "registerAndSelfIntroduction/images/cloud2.png"></div>
+                <!-- <div id = "cloud5" class = "clouds"><img src = "images/cloud1.png"></div>
+                <div id = "cloud6" class = "clouds"><img src = "images/cloud2.png"></div> -->
+            </div>
+       
+            
+        <div class = "introductionContainer">
+        
+        <!-- 自我介绍网页容器 -->
+            
+            <nav>
+                <p>Welcome!</p>
+                <ul class="selected">
+                    <li ><a href="#">首页</a></li>
+                    <li><a href="#">博客</a></li>
+                    <li><a href="99mul_table/99mul_table.html">9×9乘法表</a></li>
+                    <li><a href="formRequest/formRequest.html">表单请求</a></li>                                      
+                </ul>
+                <button id = "backLogIn">返回登录 -> </button>
+            </nav>
+            <aside>
+                <img src = "registerAndSelfIntroduction/images/正.png"，alt = "头像">
+                <br>
+                <p>
+                    姓名：罗正<br>
+                    性别：男<br>
+                    年龄：19<br>
+                    学院：信息与软件工程学院<br>
+                    学号：2020090920019<br>
+                    手机号：XXXXXXXXXXX<br>
+
+                </p>
+            </aside>
+            <content>
+                <div class = 'contentDiv'>
+                    <p>
+                        For more than 5 years now, design has been the central piece of my world. 
+                        On this fast and mind-blowing journey, I have moved over the years from being 
+                        a visual designer to a full-time UX/UI thinker and designer.(自行填写内容......)
+                    </p>
+                   
+                </div>
+                <div class = 'contentDiv'>
+                    <p>
+                        At the moment, this journey has brought me to Cloud Academy in Mendrisio, Switzerland
+                         where I am a full-time Product Designer. In this position, as with freelance, I am working
+                          remotely and I have been for approximately two years.(自行填写内容......)
+                    </p>
+                </div>
+                <div class = 'contentDiv'>
+                    <p>
+                            For more than 5 years now, design has been the central piece of my world. On this fast
+                         and mind-blowing journey, I have moved over the years from being a visual designer to a
+                          full-time UX/UI thinker and designer.(自行填写内容......)
+                    </p>
+                </div>
+            </content>
+            <footer></footer>
+        </div>
+ 
+        <script src = "registerAndSelfIntroduction/index.js"></script>
+    </body>
+</html>

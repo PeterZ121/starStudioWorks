@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>豆豆同学的9*9乘法表</title>
+        <style type=text/css>
+            #generate, .cell{
+                border-color:white;
+                font-family:'Times New Romans',Times,serif;
+            }
+
+            #generate{
+                width:100px;
+                height:50px;
+
+                font-size:21px;
+                border-radius:18px;
+                background-color:rgb(129, 167, 238);
+                cursor:pointer;
+            }
+            
+            #box{
+                margin:20px 0px;
+            }
+
+            .cell{
+                display:inline-block;
+                width:80px;
+                height:30px;
+                line-height:30px;
+                text-align:center;           
+
+                background-color: rgb(129, 167, 238);
+
+                border-radius:8px;               
+                
+                margin:10px 5px;             
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <button id = "generate">生成</button>
+        <div id = 'box'></div>
+
+    <script>
+        var gen = document.getElementById("generate");
+        var cel = document.getElementById("box");
+
+        function generateCell(){
+            var box = "";
+            
+            for(let i=1;i<=9;i++){
+                for(let j=1;j<=i;j++){
+                    box+="<div class='cell'>"+j+"×"+i+"="+j*i+"</div>";
+                }
+                box+="<br>";
+            }
+            cel.innerHTML=box;
+            
+        }    
+           
+        gen.onclick = generateCell;
+        
+    </script>
+    </body>
+</html>

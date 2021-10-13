@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>表单请求</title>
+        <meta charset = "utf-8" >
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                color: white;
+                font-size: 15px;
+            }
+            body{
+                background-color: rgba(17, 15, 15, 0.842);
+            }
+/* 
+            label{
+                margin-top: 100px;
+                
+            } */
+
+            #loading{
+                position: fixed;
+                width: 100px;
+                height: 100px;
+                top:50%;
+                left: 50%;
+            }
+            #search{
+                font-size:23px;
+                padding: 10px;
+            }
+            #searchUser{
+                    width:300px;  
+                    height: 25px;
+                    background-color:rgba(0,0,0,0.25);
+                }
+
+        </style>
+    </head>
+
+    <body>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src='https://cdn.bootcss.com/Mock.js/1.0.0/mock-min.js'></script>
+
+        <div class = 'searchContainer'>
+            <img id = "loading" src = "loading.gif" alt = "loading">
+            <label id="search">查询用户信息:  </label>
+            <input id="searchUser"  type="text" placeholder="请输入用户id" > 
+
+            <div id = 'information'></div>
+  
+    </div>
+    
+        <script src = "mock/mock.js"></script>
+        <script>
+          
+            var information = document.getElementById("information");
+
+           
+            $("#loading").hide();
+            $('#searchUser').bind('input propertychange', debounce(1000));      
+
+            function searchUserInfo(){
+                if($("#searchUser").val() === "" ){
+                    $("#information").empty();//输入信息为空是删除所有子元素
+                    console.log("空");
+                    $("#loading").hide();
+                    return;
+                } 
+                var id = document.createElement('label');
+                id.textContent = "id: "+$("#searchUser").val();
+                information.appendChild(id);
+                //获取随机数据
+                $.ajax({
+                url:'/user/userinfo',
+                dataType:'text',//返回纯文本数据
+                success:(data)=>{
+                    var info = document.createElement("p");
+                    info.textContent = data;     
+                    console.log(data);
+                    information.appendChild(info);                   
+                    }
+                })
+                $("#loading").hide();
+            }
+        
+            //设置防抖  
+            function debounce(delay){
+                
+                var timeout = null;
+                return function(){
+                    $("#loading").show();
+                    clearTimeout(timeout);
+                    
+                    timeout = setTimeout(searchUserInfo,delay);
+                }
+            }
+
+        </script>
+    </body>
+</html>
